@@ -1,0 +1,26 @@
+name: Deploy to Azure Function
+
+on:
+  push:
+    branches:
+      - main # or the name of your default branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS_FUNC }}
+    
+    - name: Assignmenttwo
+      uses: Azure/functions-action@v1
+      with:
+        app-name: <YourFunctionAppName> # Name of your Function App
+        package: ./API1 # Path to your project folder
+        publish-profile: ${{ secrets.AZURE_CREDENTIALS_FUNC }}
