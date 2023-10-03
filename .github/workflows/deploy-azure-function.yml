@@ -16,11 +16,11 @@ jobs:
     - name: Login to Azure
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS_FUNC }}
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     
     - name: API1
       uses: Azure/functions-action@v1
       with:
         app-name: Assignmenttwo # Name of your Function App
         package: ./C_Sharp/API1 # Path to your project folder
-        publish-profile: ${{ secrets.AZURE_CREDENTIALS_FUNC }}
+        publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
